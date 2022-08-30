@@ -1,0 +1,9 @@
+clang++ -std=c++11 harness_db.cc -I/your_path/leveldb/build/include -I/your_path/leveldb/ -I/your_path/leveldb/include/ /your_path/leveldb/build/libleveldb.a -lstdc++fs -lpthread -o harness
+
+afl-g++ -std=c++11 harness_db.cc -I/home/anban/桌面/leveldb/build/include -I/home/anban/桌面/leveldb/ -I/home/anban/桌面/leveldb/include/ /home/anban/桌面/leveldb/build/libleveldb.a -lstdc++fs -lpthread -o harness
+
+afl-fuzz -i fuzz_in -o fuzz_out ./harness @@
+
+CXX=afl-g++ CC=afl-gcc cmake -DCMAKE_BUILD_TYPE=Release -DLEVELDB_BUILD_TESTS=0 -DLEVELDB_BUILD_BENCHMARKS=0 ..  && cmake --build .
+
+CXX=afl-g++ CC=afl-gcc cmake -DCMAKE_BUILD_TYPE=Release -DLEVELDB_BUILD_TESTS=0 -DLEVELDB_BUILD_BENCHMARKS=0 ..

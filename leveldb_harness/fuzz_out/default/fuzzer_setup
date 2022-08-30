@@ -1,0 +1,4 @@
+# environment variables:
+AFL_KILL_SIGNAL=9
+# command line:
+'afl-fuzz' '-m' 'none' '-D' '-t' '1000' '-i' 'fuzz_in' '-o' 'fuzz_out' '-c' './harnesscmp' '--' './harness' '@@'
