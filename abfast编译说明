@@ -1,0 +1,20 @@
+#ABFast环境安装
+apt install -y apt-utils zip
+apt install -y wget gnupg software-properties-common
+wget https://apt.llvm.org/llvm-snapshot.gpg.key
+apt-key add llvm-snapshot.gpg.key
+apt-add-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main"
+
+apt update
+apt install -y lsb-release software-properties-common 
+apt install -y build-essential python3-dev automake git vim cmake flex bison libglib2.0-dev libpixman-1-dev python3-setuptools
+apt install -y clang-13
+ln -s /usr/bin/clang-13 /usr/bin/clang
+ln -s /usr/bin/clang++-13 /usr/bin/clang++
+
+
+#编译ABFast源码
+unzip abfast.zip
+cd abfast
+make 
+make install
